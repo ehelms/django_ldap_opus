@@ -1,0 +1,43 @@
+This Django app allows for users to be authenticated against an LDAP.
+Optionally, local Django groups can be used to grant users permissions based on their roles within the LDAP.
+See settings below for configurable options and examples.
+
+
+Django Settings
+
+1. This setting tells Django where to redirect in the event the login_required or permission_required decorators are used.
+    LOGIN_URL = "/ldap/login/"
+    
+2. This setting tells Django to bind a user profile to the user object defined by the settings value.
+    AUTH_PROFILE_MODULE = "django_ldap_opus.UserProfile"
+
+
+App Settings
+1. This settings represents the address of the ldap server. (e.g. ldap.ncsu.edu)
+
+    SERVER_URL = "ldap.ncsu.edu"
+
+    
+2. This setting represents the base bind to the server.
+
+    BIND_BASE = "dc=ncsu, dc=edu"
+
+
+3. This settings represents the distuingished name used for a bind to the ldap-server.
+
+    BIND_DISTINGUISHED_NAME = "ou=accounts"
+
+
+4. Set to False if the ldap-server uses a self-signed certificate, True otherwise.
+    
+    REQUIRE_SSL_CERTIFICATE = True
+    
+    
+5. This setting represents the string used to lookup a users groups on the ldap-server.
+    
+    GROUP_RETRIEVAL_STRING = "memberNisNetgroup"
+
+
+6. This setting determines whether or not to use local Django groups to represent roles on the ldap-server and filter permissions based on how the users roles match the setup groups.
+        
+    USE_LOCAL_LDAP_GROUPS = False
