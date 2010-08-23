@@ -1,0 +1,18 @@
+{% extends "django_ldap_opus/base.html" %}
+{% block title %}Logout{% endblock %}
+
+{% block content %}
+<div class="content">
+    <p>You have been successfully logged out.</p>
+    {% if next %}
+    <form action="{{ next }}" method="GET">
+        <input type="submit" value="Return to Home Page." />
+        </form>
+
+    {% else %}
+        <form action="/idpauth/login/" method="GET">
+            <input type="submit" value="Return to Login page." />
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

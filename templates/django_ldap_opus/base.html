@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>{% block title %}{% endblock title %}</title>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            p {
+                margin: 20px auto;
+                color: blue;
+                font-weight: bold;
+                text-align: center;
+            }
+            .content {
+                margin: 300px auto;
+                width: 15%;
+                border-radius: 5px;
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        {% block content %}
+        {% endblock content %}
+    </body>
+</html>

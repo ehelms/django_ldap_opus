@@ -1,0 +1,13 @@
+{% extends "django_ldap_opus/base.html" %}
+{% block content %}
+<div class="content">
+    <p>LDAP Login</p>
+    <form action="{% url ldap_login_url %}" method="POST">
+        <label>Username:</label><input type="text" name="username"><br>
+        <label>Password:</label><input type="password" name="password"><br>
+        <input type="hidden" name="next" value="{{ next }}" />
+        {% csrf_token %}
+        <input type="submit" value="Login" />
+    </form>
+</div>
+{% endblock %}
