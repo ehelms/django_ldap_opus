@@ -1,5 +1,6 @@
 {
     "settings" : {
+        "LOGIN_URL" : "/ldap/login/"
     },
     "usersettings" : [
         ["SERVER_URL", "This is the url of your LDAP server (e.g. ldap.ncsu.edu).", "string", ""],

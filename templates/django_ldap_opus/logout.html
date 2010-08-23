@@ -7,10 +7,9 @@
     {% if next %}
     <form action="{{ next }}" method="GET">
         <input type="submit" value="Return to Home Page." />
-        </form>
-
+    </form>
     {% else %}
-        <form action="/idpauth/login/" method="GET">
+    <form action="{% url ldap_login_url %}" method="GET">
             <input type="submit" value="Return to Login page." />
         </form>
     {% endif %}

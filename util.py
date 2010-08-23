@@ -36,10 +36,20 @@ def get_ldap_roles(server, username, password):
                     if result_type == ldap.RES_SEARCH_ENTRY:
                         result_set.append(result_data)
             roles = result_set[0][0][1][str(settings.GROUP_RETRIEVAL_STRING)]
-            return roles
+            return roles, ""
         else:
             return {}
-    except ldap.LDAPError, e:
-        return None
+    except ldap.INVALID_CREDENTIALS:
+        return None, "Invalid credentials"    
+    except ldap.LDAPError:
+        if type(ldap.LDAPError.message) == dict and ldap.LDAPError.message.has_key('desc'):
+            return None, ldap.LDAPError.message['desc']
+        else:
+            return None, "LDAP Error occurred"
+    except e:
+        if type(e.message) == dict and e.message.has_key('desc'):
+            return None, e.message['desc']
+        else:
+            return None, "Error occurred"
     finally:
         ldap_session.unbind()

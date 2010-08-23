@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User, Permission, Group
 from django.core.exceptions import ObjectDoesNotExist
+from django.conf import settings
 
 from opus.lib import log
 log = log.getLogger()
@@ -26,7 +27,8 @@ class LDAPBackend:
 
 
     def get_group_permissions(self, user_obj):
-        user_obj._perm_cache.update(self.get_ldap_group_permissions(user_obj))
+        if settings.USE_LOCAL_LDAP_GROUPS:
+            user_obj._perm_cache.update(self.get_ldap_group_permissions(user_obj))
         
         if not hasattr(user_obj, '_group_perm_cache'):
             perms = Permission.objects.filter(group__user=user_obj

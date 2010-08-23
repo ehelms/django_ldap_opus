@@ -2,12 +2,15 @@
 {% block content %}
 <div class="content">
     <p>LDAP Login</p>
+    {% if message %}
+    <p><font color='red'>{{ message }}</font></p>
+    {% endif %}
     <form action="{% url ldap_login_url %}" method="POST">
         <label>Username:</label><input type="text" name="username"><br>
         <label>Password:</label><input type="password" name="password"><br>
         <input type="hidden" name="next" value="{{ next }}" />
         {% csrf_token %}
-        <input type="submit" value="Login" />
+        <input type="submit" value="Login" class="button" />
     </form>
 </div>
 {% endblock %}
