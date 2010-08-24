@@ -10,10 +10,7 @@ from django_ldap_opus.util import get_ldap_roles
 from django_ldap_opus.models import UserProfile
 
 
-def ldap_login(request, template_name=None, redirect_viewname=None, redirect_url=None):
-    if not template_name:
-        template_name = "django_ldap_opus/login.html"
-    
+def ldap_login(request, template_name="django_ldap_opus/login.html", redirect_viewname=None, redirect_url=None):
     if "next" in request.REQUEST:
             next = request.REQUEST['next']
     elif not redirect_url:
