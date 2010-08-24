@@ -3,7 +3,6 @@
         "LOGIN_URL" : "/ldap/login/",
         "AUTH_PROFILE_MODULE" : "django_ldap_opus.UserProfile",
         "AUTHENTICATION_BACKENDS" : ["django_ldap_opus.backend.LDAPBackend"],
-
     },
     "usersettings" : [
         ["SERVER_URL", "This is the url of your LDAP server (e.g. ldap.ncsu.edu).", "string", ""],
