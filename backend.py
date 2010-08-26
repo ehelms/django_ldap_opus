@@ -2,9 +2,6 @@ from django.contrib.auth.models import User, Permission, Group
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 
-from opus.lib import log
-log = log.getLogger()
-
 
 class LDAPBackend:
     def authenticate(self, username=None, password=None):
@@ -12,17 +9,14 @@ class LDAPBackend:
             return None
         else:
             if password == None:
-                log.debug("Non-local authen")
                 user, created = User.objects.get_or_create(username=username)
                 return user
             else:
-                log.debug("local authen")
                 try:
                     user = User.objects.get(username=username)
                     if user.check_password(password):
                         return user
                 except User.DoesNotExist:
-                    log.debug("User not found in database")
                     return None
 
 

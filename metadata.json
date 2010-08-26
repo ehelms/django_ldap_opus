@@ -2,7 +2,7 @@
     "settings" : {
         "LOGIN_URL" : "/ldap/login/",
         "AUTH_PROFILE_MODULE" : "django_ldap_opus.UserProfile",
-        "AUTHENTICATION_BACKENDS" : ["django_ldap_opus.backend.LDAPBackend"],
+        "AUTHENTICATION_BACKENDS" : ["django_ldap_opus.backend.LDAPBackend"]
     },
     "usersettings" : [
         ["SERVER_URL", "This is the url of your LDAP server (e.g. ldap.ncsu.edu).", "string", ""],
@@ -10,6 +10,6 @@
         ["BIND_DISTINGUISHED_NAME", "This is the bind distinguished name. (e.g. ou=accounts).", "string", ""],
         ["REQUIRE_SSL_CERTIFICATE", "Select true for non-self-signed certificate on the LDAP server.", True, True],
         ["GROUP_RETRIEVAL_STRING", "The string used to retrieve user groups from the server (e.g. memberNisNetgroup).", "string", ""],
-        ["USE_LOCAL_LDAP_GROUPS", "Set to True if the use of local Django groups is desired to represent roles on the ldap-server and give permissions to users who have those roles.", boolean, False],
+        ["USE_LOCAL_LDAP_GROUPS", "Set to True if the use of local Django groups is desired to represent roles on the ldap-server and give permissions to users who have those roles.", "bool", False]
     ]
 }
