@@ -1,6 +1,6 @@
 {
     "settings" : {
-        "LOGIN_URL" : "/ldap/login/",
+        "LOGIN_URL" : "/django_ldap_opus/login/",
         "AUTH_PROFILE_MODULE" : "django_ldap_opus.UserProfile",
         "AUTHENTICATION_BACKENDS" : ["django_ldap_opus.backend.LDAPBackend"]
     },
